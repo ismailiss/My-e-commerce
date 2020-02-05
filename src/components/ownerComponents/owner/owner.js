@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../../hoc/auxiliary/uxiliary';
+import Aux from '../../../hoc/auxiliary/auxiliary';
 import Moment from 'react-moment';
 import { Button } from 'react-bootstrap';
 
