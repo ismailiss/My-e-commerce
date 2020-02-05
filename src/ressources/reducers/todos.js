@@ -1,6 +1,11 @@
 import{
   ADD_TODO,ADD_TODO_FAILED,ADD_TODO_SUCCEEDED,LIST_TODO
 }from  '../actions';
+const initialState = {
+  data: [],
+  loading: false,
+  error: ''
+};
 export default function todos(state = [], action) {
   switch (action.type) {
     case ADD_TODO:

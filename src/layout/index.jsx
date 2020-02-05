@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link  } from 'react-router-dom';
 import Todo from '../pages/todoapp';
+import OwnerList from '../containers/owner/ownerList/ownerList';
 
 function About() {
   return <h2>About</h2>;
@@ -20,6 +21,9 @@ export default () => {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/owner-list">owner-list</Link>
+            </li>
           </ul>
         </nav>
         
@@ -28,6 +32,8 @@ export default () => {
         <Route exact path='/about'>
           <About />
         </Route>
+        <Route path="/owner-list" component={OwnerList} />
+
       </Switch>     
        </div>
     </Router>

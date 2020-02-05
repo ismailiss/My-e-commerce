@@ -1,15 +1,24 @@
-import { put, takeLatest } from 'redux-saga/effects';
-
-function* addcatalog(action) {
+import { all, fork, put, takeLatest } from 'redux-saga/effects';
+import{
+  ADD_TODO,ADD_TODO_FAILED,ADD_TODO_SUCCEEDED
+}from  '../actions';
+function* addTodo(action) {
   try {
-    yield put({ type: 'ADD_CATALOG_SUCCEEDED', catalog: action.catalog });
+    yield put({ type: ADD_TODO_SUCCEEDED, todo: action.todo });
   } catch (e) {
-    yield put({ type: 'ADD_CATALOG_FAILED', message: e.message });
+    yield put({ type: ADD_TODO_FAILED, message: e.message });
   }
 }
 
-function* watcher() {
-  yield takeLatest('ADD_CATALOG', addcatalog);
+function* watcherAddTodo() {
+  yield takeLatest(ADD_TODO, addTodo);
 }
 
-export default watcher;
+
+export default function* rootSaga() {
+  console.log("watcher from rootSaga");
+
+  yield all([
+    fork(watcherAddTodo)
+  ]);
+}
