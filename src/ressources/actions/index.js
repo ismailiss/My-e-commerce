@@ -10,4 +10,5 @@ export const OWNERS_LIST_GET_LIST_SUCCESS = "OWNERS_LIST_GET_LIST_SUCCESS";
 export const OWNERS_LIST_GET_LIST_ERROR = "OWNERS_LIST_GET_LIST_ERROR";
 
 
+export * from "../reducers/owner/actions";
 

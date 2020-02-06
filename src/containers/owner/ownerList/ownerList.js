@@ -1,14 +1,10 @@
- 
 import React, { Component } from 'react';
 import { Table, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Aux from '../../../hoc/auxiliary/auxiliary';
 import Owner from '../../../components/ownerComponents/owner/owner';
-import { bindActionCreators } from 'redux'
-
 import { connect  } from 'react-redux';
-//import * as repositoryActions from '../../../ressources/actions/repositoryActions';
-import {getOwnersList} from '../../../ressources/actions/ownerActions';
+import {getOwnersList} from '../../../ressources/actions';
 
 class OwnerList extends Component {
     
@@ -25,11 +21,13 @@ class OwnerList extends Component {
         console.log("componentDidMount");
         this.props.getOwnersList();
     }
+     render() {
+        console.log(this.props.owner.ownersItems);   
+        console.log('render')
 
-    render() {
         let owners = [];
-        if (this.props.data && this.props.data.length > 0) {
-            owners = this.props.data.map((owner) => {
+        if (this.props.owner && this.props.owner.ownersItems && this.props.owner.ownersItems.length > 0) {
+            owners = this.props.owner.ownersItems.map((owner) => {
                 return (
                     <Owner key={owner.id} owner={owner} {...this.props} />
                 )
@@ -37,7 +35,7 @@ class OwnerList extends Component {
         }
 
         return (
-            // <Aux>
+         <Aux>
             <div>
                 <Row>
                     <Col mdOffset={10} md={2}>
@@ -65,7 +63,7 @@ class OwnerList extends Component {
                     </Col>
                 </Row>
                 </div>
-            /* </Aux> */
+             </Aux> 
         )
     }
 }
@@ -76,15 +74,31 @@ class OwnerList extends Component {
 //   })
 
 
-function mapStateToProps(state) {
-    return { owner: state.owner }
-  }
-  function mapDispatchToProps(dispatch) {
-    return { actions: bindActionCreators(getOwnersList, dispatch) }
-  }
+// function mapStateToProps(state) {
+//     return { owner: state.owner }
+//   }
+
+//   function mapDispatchToProps(dispatch) {
+//     return { actions: bindActionCreators(getOwnersList, dispatch) }
+//   }
   
 
+//   export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(OwnerList)
+
+  const mapStateToProps = ({
+    owner
+  }) => {
+    return {
+        owner
+    };
+  };
   export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(OwnerList)
+      mapStateToProps,
+      {
+        getOwnersList,
+      }
+    )(OwnerList)
+  

@@ -3,7 +3,7 @@ import {
     OWNERS_LIST_GET_LIST_SUCCESS,
     OWNERS_LIST_GET_LIST_ERROR,
 
-} from '../actions';
+} from '../../actions';
 
 
 export const getOwnersList = () => ({

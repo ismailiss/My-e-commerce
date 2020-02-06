@@ -3,7 +3,7 @@ import {
     OWNERS_LIST_GET_LIST_SUCCESS,
     OWNERS_LIST_GET_LIST_ERROR,
 
-} from '../actions';
+} from '../../actions';
 
 
 const INIT_STATE = {
@@ -13,25 +13,13 @@ const INIT_STATE = {
 };
 
 
-export const getOwnersList = () => ({
-    type: OWNERS_LIST_GET_LIST
-});
-
-export const getOwnersListSuccess = (items) => ({
-    type: OWNERS_LIST_GET_LIST_SUCCESS,
-    payload: items
-});
-
-export const getOwnersListError = (error) => ({
-    type: OWNERS_LIST_GET_LIST_ERROR,
-    payload: error
-});
-
 
 export default (state = INIT_STATE, action) => {
 	switch (action.type) {
 
 		case OWNERS_LIST_GET_LIST:
+			console.log('OWNERS_LIST_GET_LIST reducer')
+
 			return { ...state, loading: false };
 
 		case OWNERS_LIST_GET_LIST_SUCCESS:

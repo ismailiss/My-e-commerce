@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import catalogReducer from './catalogReducer';
-import ownerReducer from './ownerReducer';
+import ownerReducer from '../reducers/owner/reducer';
 
 export default combineReducers({
   todos,
